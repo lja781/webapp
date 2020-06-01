@@ -20,6 +20,7 @@ h1, h2, h3, h4 {
 
 .date {
     color: #828282;
+    float: right;
 }
 
 .save {
@@ -35,6 +36,10 @@ h1, h2, h3, h4 {
     float: right;
     font-size: 26pt;
     margin-right: 20px;
+}
+
+.btn, .btn-default {
+    float: right;
 }
 
 .post {
