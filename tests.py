@@ -14,4 +14,4 @@ class BasicTest(unittest.TestCase):
         self.assertIn('lja781 Blog', self.browser.title)
 
 if __name__ == '__main__':
-    unittest.main()#warnings='ignore')
+    unittest.main()
