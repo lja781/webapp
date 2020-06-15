@@ -12,6 +12,9 @@ password = '12345'
 
 class HomePageTest(TestCase):
 
+    def skip(self, reason):
+        self.skipTest(reason)
+
     @classmethod
     def setUpClass(self):
         self.browser = webdriver.Firefox()
@@ -35,7 +38,26 @@ class HomePageTest(TestCase):
         self.assertEqual(new_doc_link.get_attribute('href'), BASE_URL + "/post/new/")
 
     def test_displays_content_correctly(self):
-        self.fail("Test not implemented")
+        pg_content = self.browser.find_element_by_class_name("content")
+        posts = pg_content.find_elements_by_class_name("post")
+        if (len(posts) > 0):
+            post = posts[0]
+            pub_date = post.find_element_by_class_name("date")
+            self.assertIn("published: ", pub_date.text)
+            post_title = post.find_element_by_tag_name("h2 a")
+            post_title_link = post_title.get_attribute("href")
+            self.assertIn(BASE_URL + "/post/", post_title_link)
+
+            post_content = post.find_element_by_class_name("content-preview")
+            self.assertTrue(len(post_content.text) > 0)
+        else:
+            self.skip("Post list is empty")
 
     def test_displays_no_content_message_correctly(self):
-        self.fail("Test not implemented")
+        pg_content = self.browser.find_element_by_class_name("content")
+        posts = pg_content.find_elements_by_class_name("post")
+        if (len(posts) == 0):
+            notification = pg_content.find_element_by_class_name("inline-notify")
+            self.assertEqual(notification.text, "Oh no! There aren't any posts yet!")
+        else:
+            self.skip("Post list is not empty")
