@@ -2,13 +2,14 @@ from django.test import TestCase
 from django.urls import resolve
 from django.http import HttpRequest
 
-from blog.views import post_list
+from .views import post_list
 
 
 class HomePageTest(TestCase):
 
     def test_root_url_resolves_to_home_page_view(self):
         found = resolve('/')
+        print(found.func)
         self.assertEqual(found.func, post_list)
 
     def test_home_page_returns_correct_html(self):
