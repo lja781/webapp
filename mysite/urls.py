@@ -19,7 +19,7 @@ from django.urls import path, include
 from blog import views
 
 urlpatterns = [
-    path('', views.redirect_view, name='redirect'),
+    path('', views.redirect_view, name='home'),
     path('admin/', admin.site.urls),
     path('blog/', include('blog.urls')),
     path('accounts/', include('accounts.urls')),
