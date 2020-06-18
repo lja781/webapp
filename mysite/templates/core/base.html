@@ -12,7 +12,7 @@
 <body>
     <div class="page-header">
         {% if meta.is_logged_in %}
-            <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+            <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-file"></span></a>
             <a href="{% url 'profile' %}" class="top-menu"><span class="glyphicon glyphicon-user"></span></a>
         {% else %}
             <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
