@@ -16,13 +16,10 @@ class PageTests(TestCase):
         self.user.delete()
 
     def setUp(self):
-        #self.client.login(username="test", password="12345")
         pass
 
     def tearDown(self):
-        #self.client.logout()
         pass
-
     def test_login_page(self):
         response = self.client.get('/accounts/login/')
         self.assertTemplateUsed(response, 'accounts/login.html')
@@ -32,5 +29,7 @@ class PageTests(TestCase):
         self.assertTemplateUsed(response, 'accounts/signup.html')
 
     def test_profile_page(self):
+        self.client.login(username="test", password="12345")
         response = self.client.get('/accounts/profile/')
         self.assertTemplateUsed(response, 'accounts/profile.html')
+        self.client.logout()
