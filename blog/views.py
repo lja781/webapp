@@ -19,6 +19,8 @@ def post_detail(request, pk):
 
 def post_new(request):
     meta = {"is_logged_in":request.user.is_authenticated}
+    if not request.user.is_authenticated:
+        return redirect('login')
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():

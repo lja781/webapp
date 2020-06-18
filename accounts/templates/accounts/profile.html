@@ -1,6 +1,9 @@
 {% extends 'core/base.html' %}
 
 {% block content %}
-    <p>{{ user.username }}</p>
-    <a class="btn btn-default" href="{% url 'logout'%}">Logout</a>
+    <h1>{{ user.username }}
+        <a class="btn btn-default" href="{% url 'logout' %}">Logout</a>
+    {% if user.is_superuser %}
+        <a class="btn btn-default" href="{% url 'admin:index' %}">Admin</a>
+    {% endif %}</h1>
 {% endblock %}

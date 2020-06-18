@@ -18,6 +18,10 @@ h1, h2, h3, h4 {
     font-family: 'Lobster', cursive;
 }
 
+.btn, .btn-default {
+    font-family: 'Arial';
+}
+
 .date {
     color: #828282;
     float: right;

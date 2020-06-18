@@ -39,6 +39,8 @@ def signup(request):
 
 def profile(request):
     meta = {"is_logged_in":request.user.is_authenticated}
+    if not request.user.is_authenticated:
+        return redirect('login')
     user = request.user
     return render(request, 'accounts/profile.html', {'meta':meta, 'user':user})
 
