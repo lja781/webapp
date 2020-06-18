@@ -15,7 +15,7 @@ class PageTests(TestCase):
         user = User.objects.create_user(username="test")
         user.set_password("12345")
         user.save()
-        post = Post.objects.create(author=user, title="test post", text="asdfghyhgesv")
+        post = Post.objects.create(author=user, title="test post", text="test content")
 
     @classmethod
     def tearDownClass(self):
