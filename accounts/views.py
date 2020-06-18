@@ -1,13 +1,20 @@
 from django.contrib.auth import login as func_login
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import logout as func_logout
 from django.shortcuts import render, redirect
 
 def login(request):
-    return render(request, 'accounts/login.html', {})
+    meta = {"is_logged_in":request.user.is_authenticated}
+    if request.user.is_authenticated:
+        return redirect('profile')
+    return render(request, 'accounts/login.html', {'meta':meta})
 
 def signup(request):
-    if request.method == "POST":
+    meta = {"is_logged_in":request.user.is_authenticated}
+    if request.user.is_authenticated:
+        return redirect('profile')
+    elif request.method == "POST":
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
@@ -18,4 +25,17 @@ def signup(request):
             return redirect('home')
     else:
         form = UserCreationForm()
-    return render(request, 'accounts/signup.html', {'form': form})
+    return render(request, 'accounts/signup.html', {'form': form, 'meta':meta})
+
+def profile(request):
+    meta = {"is_logged_in":request.user.is_authenticated}
+    user = {"username":request.user.username}
+    return render(request, 'accounts/profile.html', {'meta':meta, 'user':user})
+
+def logout(request):
+    meta = {"is_logged_in":request.user.is_authenticated}
+    if request.user.is_authenticated:
+        func_logout(request)
+    else:
+        return redirect('home')
+    return render(request, 'accounts/logout.html', {'meta':meta})

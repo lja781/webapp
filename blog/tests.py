@@ -1,6 +1,5 @@
 from django.test import TestCase
 from django.urls import resolve
-from django.http import HttpRequest
 
 from django.contrib.auth.models import User
 
@@ -12,14 +11,14 @@ class PageTests(TestCase):
 
     @classmethod
     def setUpClass(self):
-        user = User.objects.create_user(username="test")
-        user.set_password("12345")
-        user.save()
-        post = Post.objects.create(author=user, title="test post", text="test content")
+        self.user = User.objects.create_user(username="test")
+        self.user.set_password("12345")
+        self.user.save()
+        post = Post.objects.create(author=self.user, title="test post", text="test content")
 
     @classmethod
     def tearDownClass(self):
-        pass
+        self.user.delete()
 
     def setUp(self):
         self.client.login(username="test", password="12345")
