@@ -32,6 +32,11 @@ h1, h2, h3, h4 {
     float: right;
 }
 
+.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
 .save {
     float: right;
 }
