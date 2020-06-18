@@ -7,6 +7,10 @@
                 {{ post.published_date }}
             </div>
         {% endif %}
+        <br>
+        <div class="author">
+            Author: {{ post.author }}
+        </div>
         {% if post.author == user %}
             <br>
             <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
