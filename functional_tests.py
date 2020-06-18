@@ -1,5 +1,6 @@
 from selenium import webdriver
 
+import unittest
 from unittest import TestCase
 
 '''
@@ -7,8 +8,6 @@ Keep these tests independent from Django
 '''
 
 BASE_URL = 'http://localhost:8000'
-username = 'testuser'
-password = '12345'
 
 class HomePageTest(TestCase):
 
@@ -35,7 +34,7 @@ class HomePageTest(TestCase):
     def test_has_new_post_button(self):
         pg_header = self.browser.find_element_by_class_name("page-header")
         new_doc_link = pg_header.find_element_by_class_name("top-menu")
-        self.assertEqual(new_doc_link.get_attribute('href'), BASE_URL + "/post/new/")
+        self.assertEqual(new_doc_link.get_attribute('href'), BASE_URL + "/blog/post/new/")
 
     def test_displays_content_correctly(self):
         pg_content = self.browser.find_element_by_class_name("content")
@@ -46,7 +45,7 @@ class HomePageTest(TestCase):
             self.assertIn("published: ", pub_date.text)
             post_title = post.find_element_by_tag_name("h2 a")
             post_title_link = post_title.get_attribute("href")
-            self.assertIn(BASE_URL + "/post/", post_title_link)
+            self.assertIn(BASE_URL + "/blog/post/", post_title_link)
 
             post_content = post.find_element_by_class_name("content-preview")
             self.assertTrue(len(post_content.text) > 0)
@@ -61,3 +60,6 @@ class HomePageTest(TestCase):
             self.assertEqual(notification.text, "Oh no! There aren't any posts yet!")
         else:
             self.skip("Post list is not empty")
+
+if __name__ == "__main__":
+    unittest.main()
