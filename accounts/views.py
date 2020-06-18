@@ -17,9 +17,6 @@ def login(request):
             if user is not None:
                 func_login(request, user)
                 return redirect('home')
-            else:
-                pass
-                #return redirect("")
     form = AuthenticationForm(request)
     return render(request, 'accounts/login.html', {'form':form, 'meta':meta})
 
@@ -42,7 +39,7 @@ def signup(request):
 
 def profile(request):
     meta = {"is_logged_in":request.user.is_authenticated}
-    user = {"username":request.user.username}
+    user = request.user
     return render(request, 'accounts/profile.html', {'meta':meta, 'user':user})
 
 def logout(request):
