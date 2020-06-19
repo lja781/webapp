@@ -32,11 +32,6 @@ h1, h2, h3, h4 {
     float: right;
 }
 
-.disabled, .disabled:hover {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
 .save {
     float: right;
 }
@@ -45,7 +40,18 @@ h1, h2, h3, h4 {
     width: 100%;
 }
 
-.top-menu span.glyphicon:hover {
+.top-menu, .top-menu:visited {
+    text-align: center;
+    width: inherit;
+    float: right;
+    margin-right: 20px;
+    padding: 3px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition-duration: 0.4s;
+}
+
+.top-menu:hover, .top-menu.glyphicon:hover {
     text-align: center;
     width: inherit;
     padding: 3px;
@@ -55,20 +61,14 @@ h1, h2, h3, h4 {
     background-color: #ffffff;
 }
 
-.top-menu span.glyphicon, .top-menu span.glyphicon:visited  {
-    text-align: center;
-    width: inherit;
-    padding: 3px;
-    border-radius: 4px;
-    text-decoration: none;
-    transition-duration: 0.4s;
+.disabled, .disabled:hover {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
-.top-menu, .top-menu:visited, .top-menu:hover {
-    text-align: center;
-    width: inherit;
-    float: right;
-    margin-right: 20px;
+.top-menu.disabled, .top-menu.disabled:visited, .top-menu.disabled:hover {
+    color: #ffffff;
+    background-color: #c25100;
 }
 
 .btn, .btn-default {
