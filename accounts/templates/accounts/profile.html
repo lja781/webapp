@@ -2,10 +2,12 @@
 
 {% block content %}
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <h1>{{ user.username }}
-            <a class="btn btn-default" href="{% url 'logout' %}">Logout</a>
+        <h1 class="sub-header">{{ user.username }}</h1>
+        <span class="right-align">
         {% if user.is_superuser %}
-            <a class="btn btn-default" href="{% url 'admin:index' %}">Admin</a>
-        {% endif %}</h1>
+            <a class="simple-button" href="{% url 'admin:index' %}">Admin</a>
+        {% endif %}
+        <a class="simple-button" href="{% url 'logout' %}">Logout</a>
+        </span>
     </div>
 {% endblock %}

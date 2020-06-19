@@ -2,6 +2,10 @@
     background-color: #c25100;
     margin-top: 0;
     padding: 20px 20px 20px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    width: 100%;
 }
 
 .page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
@@ -12,10 +16,19 @@
 
 .content {
     margin-left: 40px;
+    margin-top: 0px;
 }
 
 h1, h2, h3, h4 {
     font-family: 'Lobster', cursive;
+}
+
+.sub-header {
+    display: inline-block;
+}
+
+.right-align {
+    float: right;
 }
 
 .btn, .btn-default {
@@ -91,6 +104,25 @@ h1, h2, h3, h4 {
     font-family: 'Lobster', cursive;
     color: #000000;
     font-size: 20pt;
+}
+
+.simple-button {
+    font-size: 28pt;
+    font-family: 'Lobster', cursive;
+    background-color: #c25100;
+    border-radius: 2px;
+    border-color: #c25100;
+    border-style: outset;
+    border-width: 2px;
+    min-width: 100px;
+    min-height: 4px;
+    position: relative;
+    color: #ffffff;
+    padding: 1em 1.5em;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1em;
+    display: inline-block;
 }
 
 textarea {
