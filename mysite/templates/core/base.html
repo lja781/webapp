@@ -13,14 +13,14 @@
     <div class="page-header">
         <h1>
         {% if meta.is_logged_in %}
-            <span><a href="{% url 'post_new' %}" class="top-menu glyphicon glyphicon-plus"></a></span>
-            <span><a href="{% url 'profile' %}" class="top-menu glyphicon glyphicon-user"></a></span>
+            <span><a href="{% url 'post_new' %}" title="New post" class="top-menu glyphicon glyphicon-plus"></a></span>
+            <span><a href="{% url 'profile' %}" title="Profile" class="top-menu glyphicon glyphicon-user"></a></span>
         {% else %}
-            <span><a href="{% url 'login' %}" class="top-menu disabled glyphicon glyphicon-plus" onclick="return false;"></a></span>
-            <span><a href="{% url 'login' %}" class="top-menu glyphicon glyphicon-user"></a></span>
+            <span><a href="{% url 'login' %}" title="Login to post" class="top-menu disabled glyphicon glyphicon-plus" onclick="return false;"></a></span>
+            <span><a href="{% url 'login' %}" title="Login" class="top-menu glyphicon glyphicon-user"></a></span>
         {% endif %}
-            <span><a href="{% url 'home' %}" class="top-menu glyphicon glyphicon-home"></a></span>
-        <a href="{% url 'home' %}">lja781 Blog</a></h1>
+            <span><a href="{% url 'home' %}" title="Home" class="top-menu glyphicon glyphicon-home"></a></span>
+        <a href="{% url 'home' %}" title="Home">lja781 Blog</a></h1>
     </div>
     <div class="content container-fluid">
         <div class="row">
