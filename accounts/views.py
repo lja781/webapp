@@ -4,8 +4,10 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import logout as func_logout
 from django.shortcuts import render, redirect
 
+from mysite.site_functions import generate_meta
+
 def login(request):
-    meta = {"is_logged_in":request.user.is_authenticated}
+    meta = generate_meta(request)
     if request.user.is_authenticated:
         return redirect('profile')
     elif request.method == "POST":
@@ -21,7 +23,7 @@ def login(request):
     return render(request, 'accounts/login.html', {'form':form, 'meta':meta})
 
 def signup(request):
-    meta = {"is_logged_in":request.user.is_authenticated}
+    meta = generate_meta(request)
     if request.user.is_authenticated:
         return redirect('profile')
     elif request.method == "POST":
@@ -38,14 +40,15 @@ def signup(request):
     return render(request, 'accounts/signup.html', {'form': form, 'meta':meta})
 
 def profile(request):
-    meta = {"is_logged_in":request.user.is_authenticated}
+    meta = generate_meta(request)
     if not request.user.is_authenticated:
         return redirect('login')
     user = request.user
     return render(request, 'accounts/profile.html', {'meta':meta, 'user':user})
 
 def logout(request):
-    meta = {"is_logged_in":False}
+    meta = generate_meta(request)
+    meta["is_logged_in"]=False
     if request.user.is_authenticated:
         func_logout(request)
     else:
