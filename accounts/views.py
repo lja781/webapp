@@ -56,7 +56,9 @@ def logout(request):
     return render(request, 'accounts/logout.html', {'meta':meta})
 
 def cv(request):
-    return render(request, 'accounts/cv.html', {})
+    meta = generate_meta(request)
+    return render(request, 'accounts/cv.html', {'meta':meta})
 
 def cv_edit(request):
-    return render(request, 'accounts/cv_edit.html', {})
+    meta = generate_meta(request)
+    return render(request, 'accounts/cv_edit.html', {'meta':meta})

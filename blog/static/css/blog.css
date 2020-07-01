@@ -70,7 +70,7 @@ h1, h2, h3, h4 {
     color: inherit;
 }
 
-.top-menu:hover {
+.top-menu:hover, .top-menu.glyphicon:hover {
     text-align: center;
     width: inherit;
     padding: 3px;
@@ -83,11 +83,13 @@ h1, h2, h3, h4 {
 .disabled, .disabled:hover {
     opacity: 0.6;
     cursor: not-allowed;
+    text-decoration: none;
 }
 
 .top-menu.disabled, .top-menu.disabled:visited, .top-menu.disabled:hover {
     color: #ffffff;
     background-color: #c25100;
+    text-decoration: none;
 }
 
 .btn, .btn-default {
