@@ -54,3 +54,9 @@ def logout(request):
     else:
         return redirect('home')
     return render(request, 'accounts/logout.html', {'meta':meta})
+
+def cv(request):
+    return render(request, 'accounts/cv.html', {})
+
+def cv_edit(request):
+    return render(request, 'accounts/cv_edit.html', {})

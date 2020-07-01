@@ -20,6 +20,7 @@ class PageTests(TestCase):
 
     def tearDown(self):
         pass
+
     def test_login_page(self):
         response = self.client.get('/accounts/login/')
         self.assertTemplateUsed(response, 'accounts/login.html')
@@ -32,4 +33,14 @@ class PageTests(TestCase):
         self.client.login(username="test", password="12345")
         response = self.client.get('/accounts/profile/')
         self.assertTemplateUsed(response, 'accounts/profile.html')
+        self.client.logout()
+
+    def test_cv_page(self):
+        response = self.client.get('/accounts/profile/cv/')
+        self.assertTemplateUsed(response, 'accounts/cv.html')
+
+    def test_ev_edit_page(self):
+        self.client.login(username="test", password="12345")
+        response = self.client.get('/accounts/profile/cv/edit/')
+        self.assertTemplateUsed(response, 'accounts/cv_edit.html')
         self.client.logout()
