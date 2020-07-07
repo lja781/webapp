@@ -1,4 +1,95 @@
 {% extends 'core/base.html' %}
 
 {% block content %}
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="cv">
+            <div class="cv-item email">
+                <h1>Email</h1>
+                <h3>{% if cv.public %}{{ cv.email }}{% else %}HIDDEN{% endif %}</h3>
+            </div>
+            <div class="cv-item phone">
+                <h1>Phone</h1>
+                <h3>{% if cv.public %}{{ cv.phone }}{% else %}HIDDEN{% endif %}</h3>
+            </div>
+            <div class="cv-item address">
+                <h1>Address</h1>
+                <h3>{% if cv.public %}
+                    {% for address in cv.addresscv_set.all %}
+                        {{ address.line_1 }}<br>
+                        {{ address.line_2 }}{% if address.line_2 != "" %}<br>{% endif %}
+                        {{ address.town_city }}<br>
+                        {{ address.post_code }}<br>
+                    {% endfor %}
+                {% else %}HIDDEN{% endif %}</h3>
+            </div>
+            <div class="cv-item education">
+                <h1>Education</h1>
+                {% for edu in cv.education_set.all %}
+                    <h2>{{ edu.location }}</h2>
+                    <h3>{{ edu.comments|linebreaksbr }}</h3>
+                {% endfor %}
+            </div>
+            <div class="cv-item tech-skills">
+                <h1>Tech skills</h1>
+                {% for ts in cv.techskill_set.all %}
+                    <h2>{{ ts.title }}</h2>
+                    <h3>
+                        {% for line in ts.tech_skill_list %}
+                        <ul>
+                            <li>{{ line }}</li>
+                        </ul>
+                        {% endfor %}
+                    </h3>
+                {% endfor %}
+            </div>
+            <div class="cv-item work-experience">
+                <h1>WorkExperience</h1>
+                {% for we in cv.workexperience_set.all %}
+                    <h2>{{ we.title }}</h2>
+                    <h3>{{ we.text }}</h3>
+                {% endfor %}
+            </div>
+            <div class="cv-item other-achievements">
+                <h1>Other Achievements</h1>
+                <h3>
+                    {% for line in cv.achievement_list %}
+                    <ul>
+                        <li>{{ line }}</li>
+                    </ul>
+                    {% endfor %}
+                </h3>
+            </div>
+            <div class="cv-item skills-abilities">
+                <h1>Skills and abilities</h1>
+                <h3>
+                    {% for line in cv.skill_list %}
+                    <ul>
+                        <li>{{ line }}</li>
+                    </ul>
+                    {% endfor %}
+                </h3>
+            </div>
+            <div class="cv-item interests">
+                <h1>Interests</h1>
+                <h3>{{ cv.interests|linebreaksbr }}</h3>
+            </div>
+            <div class="cv-item referees">
+                <h1>Referees</h1>
+                {% if cv.public %}
+                    {% for referee in cv.referee_set.all %}
+                        <div class="referee">
+                            <h3>{{ referee.name }}<br>
+                            {% for address in referee.addressreferee_set.all %}
+                                {{ address.line_1 }}<br>
+                                {{ address.line_2 }}{% if address.line_2 != "" %}<br>{% endif %}
+                                {{ address.town_city }}<br>
+                                {{ address.post_code }}<br>
+                            {% endfor %}
+                            {{ referee.email }}</h3>
+                        </div>
+                    {% endfor %}
+                {% else %}HIDDEN{% endif %}
+            </div>
+        </div>
+    </div>
 {% endblock %}

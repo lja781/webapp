@@ -3,7 +3,9 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import logout as func_logout
 from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
 
+from .models import CV
 from mysite.site_functions import generate_meta
 
 def login(request):
@@ -57,8 +59,14 @@ def logout(request):
 
 def cv(request):
     meta = generate_meta(request)
-    return render(request, 'accounts/cv.html', {'meta':meta})
+    superuser = User.objects.filter(is_superuser=True).first()
+    cv, _ = CV.objects.get_or_create(owner=superuser)
+    return render(request, 'accounts/cv.html', {'meta':meta, 'cv':cv})
 
 def cv_edit(request):
     meta = generate_meta(request)
-    return render(request, 'accounts/cv_edit.html', {'meta':meta})
+    if not request.user.is_superuser:
+        return redirect('cv')
+    superuser = User.objects.filter(is_superuser=True).first()
+    cv, _ = CV.objects.get_or_create(owner=superuser)
+    return render(request, 'accounts/cv_edit.html', {'meta':meta, 'cv':cv})

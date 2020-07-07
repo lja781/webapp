@@ -14,6 +14,77 @@
     text-decoration: none;
 }
 
+.cv h1 {
+    font-size: 20pt;
+    text-decoration: underline;
+    width: 100%;
+}
+
+.cv h2 {
+    font-size: 16pt;
+}
+
+.cv h3 {
+    font-size: 13pt;
+    font-family: serif;
+}
+
+.email {
+    float: right;
+    width: 25%;
+}
+
+.phone {
+    float: right;
+    width: 25%;
+}
+
+.address {
+    float: left;
+    width: 50%;
+}
+
+.education {
+    float: left;
+    width: 100%;
+}
+
+.tech-skills {
+    float: left;
+    width: 100%;
+}
+
+.work-experience {
+    float: left;
+    width: 100%;
+}
+
+.skills-abilities {
+    float: left;
+    width: 100%;
+}
+
+.other-achievements {
+    float: left;
+    width: 100%;
+}
+
+.interests {
+    float: left;
+    width: 100%;
+}
+
+.referee {
+    float: left;
+    width: auto;
+    padding-right: 15px;
+}
+
+.referees {
+    float: left;
+    width: auto;
+}
+
 .page-title, .page-title:visited, .page-title:hover {
     color: inherit;
     text-decoration: none;
