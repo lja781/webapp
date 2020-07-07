@@ -8,7 +8,7 @@ urlpatterns = [
     path('signup/', views.profile, name='signup'),
     path('profile/', views.profile, name='profile'),
     path('profile/cv/', views.cv, name='cv'),
-    path('profile/cv/<slug:pk>/', views.cv_pk, name='cv_pk'),
-    path('profile/cv/<slug:pk>/edit/', views.cv_edit, name='cv_edit'),
+    path('profile/cv/<int:pk>/', views.cv_pk, name='cv_pk'),
+    path('profile/cv/<int:pk>/edit/', views.cv_edit, name='cv_edit'),
     path('logout/', views.logout, name='logout'),
 ]
