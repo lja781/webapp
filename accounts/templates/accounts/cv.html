@@ -2,6 +2,12 @@
 
 {% block content %}
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        {% if cv.owner == user %}
+            <div>
+                <a class="btn btn-default" href="{% url 'cv_edit' pk=cv.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+                <br>
+            </div>
+        {% endif %}
         <div class="cv">
             <div class="cv-item email">
                 <h1>Email</h1>

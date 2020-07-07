@@ -1,4 +1,69 @@
 {% extends 'core/base.html' %}
 
 {% block content %}
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h2>Edit CV</h2>
+        <form method="POST" class="cv-form">{% csrf_token %}
+            {{ cv_form.non_field_errors }}
+            <div class="fieldWrapper">
+                {{ cv_form.email.errors }}
+                <label for="{{ cv_form.email.id_for_label }}">Email</label>
+                {{ cv_form.email }}
+            </div>
+            <div class="fieldWrapper">
+                {{ cv_form.phone.errors }}
+                <label for="{{ cv_form.phone.id_for_label }}">Phone</label>
+                {{ cv_form.phone }}
+            </div>
+            <div>
+                <label>Address</label>
+                {% for address_form in address_forms %}
+                    {{ address_form }}
+                {% endfor %}
+            </div>
+            <div>
+                <label>Education</label>
+                {% for education_form in education_forms %}
+                    {{ education_form }}
+                {% endfor %}
+            </div>
+            <div>
+                <label>Tech skills</label>
+                {% for tech_skill_form in tech_skill_forms %}
+                    {{ tech_skill_form }}
+                {% endfor %}
+            </div>
+            <div>
+                <label>Work experience</label>
+                {% for work_experience_form in work_experience_forms %}
+                    {{ work_experience_form }}
+                {% endfor %}
+            </div>
+            <div class="fieldWrapper">
+                {{ cv_form.other_achievements.errors }}
+                <label for="{{ cv_form.other_achievements.id_for_label }}">Other Achievements</label>
+                {{ cv_form.other_achievements }}
+            </div>
+            <div class="fieldWrapper">
+                {{ cv_form.skills_abilities.errors }}
+                <label for="{{ cv_form.skills_abilities.id_for_label }}">Skills and abilities</label>
+                {{ cv_form.skills_abilities }}
+            </div>
+            <div class="fieldWrapper">
+                {{ cv_form.interests.errors }}
+                <label for="{{ cv_form.interests.id_for_label }}">Interests</label>
+                {{ cv_form.interests }}
+            </div>
+            <div class="fieldWrapper">
+                {{ cv_form.public.errors }}
+                <label for="{{ cv_form.public.id_for_label }}">Public</label>
+                {{ cv_form.public }}
+            </div>
+            <Label>Referees</label><br>
+            {% for referee_form in referee_forms %}
+                {{ referee_form }}
+            {% endfor %}
+            <button type="submit" class="save btn btn-default">Save</button>
+        </form>
+    </div>
 {% endblock %}
