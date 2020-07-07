@@ -84,7 +84,7 @@ def cv_edit(request, pk):
         referee_forms = [RefereeForm(request.POST, prefix=str(x), instance=v) for x,v in enumerate(referees)]
         address_forms = [AddressCVForm(request.POST, prefix=str(x), instance=v) for x,v in enumerate(addresses)]
         education_forms = [EducationForm(request.POST, prefix=str(x), instance=v) for x,v in enumerate(educations)]
-        tech_skill_forms = [TechSkillForm(request.POST, prefix=str(x), insance=v) for x,v in enumerate(tech_skills)]
+        tech_skill_forms = [TechSkillForm(request.POST, prefix=str(x), instance=v) for x,v in enumerate(tech_skills)]
         work_experience_forms = [WorkExperienceForm(request.POST, prefix=str(x), instance=v) for x,v in enumerate(work_experiences)]
         all_list = [cv_form] + referee_forms + address_forms + education_forms + tech_skill_forms + work_experience_forms
         if all([f.is_valid() for f in all_list]):
@@ -105,6 +105,6 @@ def cv_edit(request, pk):
         referee_forms = [RefereeForm(prefix=str(x), instance=v) for x,v in enumerate(referees)]
         address_forms = [AddressCVForm(prefix=str(x), instance=v) for x,v in enumerate(addresses)]
         education_forms = [EducationForm(prefix=str(x), instance=v) for x,v in enumerate(educations)]
-        tech_skill_forms = [TechSkillForm(prefix=str(x), insance=v) for x,v in enumerate(tech_skills)]
+        tech_skill_forms = [TechSkillForm(prefix=str(x), instance=v) for x,v in enumerate(tech_skills)]
         work_experience_forms = [WorkExperienceForm(prefix=str(x), instance=v) for x,v in enumerate(work_experiences)]
     return render(request, 'accounts/cv_edit.html', {'meta':meta, 'cv_form':cv_form, 'referee_forms':referee_forms, 'address_forms':address_forms, 'education_forms':education_forms, 'tech_skill_forms':tech_skill_forms, 'work_experience_forms':work_experience_forms})
